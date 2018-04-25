@@ -11,10 +11,12 @@ import urllib
 
 # Define API key and query term
 api = articleAPI('fa567ce571174336957fc6786b4dc91e')
-category = 'Politics'
-search_keyword = "trump"
+category = 'Sports'
+search_keyword = "Baseball"
 ##Keywords used so far
 # Politics - trump, democracy, Republicans, Democrats
+# Sports - "N.F.L, baseball, basketball
+
 # Method to extract the content of the url
 def parseURL(url):
     g = urllib.request.urlopen(url)
@@ -42,7 +44,7 @@ def parseURL(url):
 # Main code begins
 if __name__ == "__main__":
     print('File loaded directly')
-    articles = api.search(q=search_keyword, begin_date = 20081231, page=3)
+    articles = api.search(q=search_keyword, begin_date = 20081231, page=1)
     response = articles['response']
     docs = response['docs']
     
@@ -73,13 +75,21 @@ if __name__ == "__main__":
     index.close()  
         
     # Extract contents of url one by one and write it to text file
+    j=0
     for i in range(0,len(web_url)):
-        Article_content = parseURL(web_url[i])
-        if (Article_content == []):
-            continue
-        f = open("../../data/%s/%s.txt" %(category, i),"w+")
-        f.write(Article_content)
-        f.close()
+        try:
+            Article_content = parseURL(web_url[i])
+            if (Article_content == []):
+                continue
+            f = open("../../data/%s/%s.txt" %(category, j),"w+")
+            f.write(Article_content)
+            f.close()
+        except:
+            #web_url.remove(web_url[i])
+            print("Iteration %d" %i + " skipped - unable to fetch data")
+            #i = i-1
+            j = j-1
+        j= j+1   
         #index = index + 1
     
     #index.write(str())
