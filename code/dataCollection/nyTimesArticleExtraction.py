@@ -12,8 +12,9 @@ import urllib
 # Define API key and query term
 api = articleAPI('fa567ce571174336957fc6786b4dc91e')
 category = 'Politics'
-search_keyword = "Trump"
-
+search_keyword = "trump"
+##Keywords used so far
+# Politics - trump, democracy, Republicans, Democrats
 # Method to extract the content of the url
 def parseURL(url):
     g = urllib.request.urlopen(url)
@@ -41,7 +42,7 @@ def parseURL(url):
 # Main code begins
 if __name__ == "__main__":
     print('File loaded directly')
-    articles = api.search(q=search_keyword)
+    articles = api.search(q=search_keyword, begin_date = 20081231, page=3)
     response = articles['response']
     docs = response['docs']
     
