@@ -1,40 +1,24 @@
-Opinion | Robots Can’t Vote, but They Helped Elect Trump - The New York Times
-When you look across America to see where jobs and wages have been lost to robotics, machine learning, artificial intelligence and automation, it is the middle of the country that stands apart from the rest.
-The accompanying map, which was produced by Daron Acemoglu of M.I.T. and Pascual Restrepo of Boston University, shows the size and scope of the region that has borne the brunt of postindustrial modernization.
-It is not a coincidence that this map sheds light on President Trump’s Electoral College victory in 2016.
-“My take is that grievances, both racial and against cosmopolitan, liberal elites, have played an important role,” Acemoglu wrote me in an email:
-Acemoglu argues that recent technological developments have helped drive voters to the right:
-In their March 2017 paper, “Robots and Jobs: Evidence from US Labor Markets,” Acemoglu and Restrepo found that the addition of
-Who are the workers forced to bear the costs of the increase in workplace robots?
-According to Acemoglu and Restrepo, men take about twice as big a hit in terms of lost jobs as women do. Although both sexes suffer wage losses when robots replace people, the size of the drop in employment for women was about half that of men.
-In terms of occupational sectors, the authors found that
-Workers without college degrees experience substantially larger wage and employment losses when exposed to competition from robots, while the same competition results in
-In political terms, the workers who experience the highest costs from industrial automation fit the crucial Trump voter demographic: white non-college voters, disproportionately male, whose support for the Republican nominee surged from 2012 to 2016 — as shown in the accompanying graphic, which is based on data from the Pew Research Center.
-The graphic shows a major transformation of the Republican presidential electorate. Among whites with college degrees, support for Trump fell by 11 percentage points compared with support for Mitt Romney; among whites without degrees, Trump’s support rose by 12 points when compared with Romney’s.
-The increase in workplace robots was not alone in driving voters to the right. Communities where industries lost ground to imports from China followed a similar pattern.
-In a September 2017 paper, “Importing Political Polarization? The Electoral Consequences of Rising Trade Exposure,” David Autor, who is also an economist at M.I.T., and three of his colleagues, dug further into the demographics of those suffering the economic costs of trade with China.
-Autor and his co-authors found that
-The gains made by hard-right Republicans came at the expense of moderate Republican and Democratic incumbents.
-Even more significant, Autor determined that though generally speaking trade shocks did not “favor conservative politicians,” shocks “that disproportionately affect white males” did.
-The authors provide more detail, explaining that the
-Autor and his co-authors cite research showing that
-and that
-That translates to: white voters, especially white men, oppose paying taxes for programs that primarily provide services to others. In practice, the authors suggest, trade shocks
-This white male effect was critical to the link connecting, as Autor and his co-authors write,
-Their analysis resonates, they suggest,
-Acemoglu, Autor and their colleagues provide a synthesis between the economic and the sociocultural explanations of the rise of the populist right. In doing so, they provide a corrective to the recent tendency in segments of the liberal media to downplay economic factors and to focus instead on racial resentment and cultural dislocation as the primary forces motivating Trump voters.
-I myself have written that
-The point here is that the two generalized explanatory realms — the one focused on race and the other on economic shock — overlap. It is not either/or but both that gave us President Trump.
-Still, explanations tend to become monocausal.
-Take, for example, the Dec. 15, 2017 headline at the Vox website: “The past year of research has made it very clear: Trump won because of racial resentment.” According to German Lopez, the article’s author, “employment and income were not significantly related to that sense of white vulnerability.” What was? “Racial resentment.”
-A May 9, 2017 story in The Atlantic asserted that
-Those stories were by no means alone. Salon: “Liberals were right: Racism played a larger role in Trump’s win than income and authoritarianism”; The Nation: “Economic Anxiety Didn’t Make People Vote Trump, Racism Did.”
-The debate over the role of economic hardship among whites in building support for Trump began while the campaign was in full swing.
-Nate Silver, founder and editor of the FiveThirtyEight website, wrote “The Mythology of Trump’s ‘Working Class’ Support” in the midst of the primary fight for the Republican nomination.
-“Compared with most Americans, Trump’s voters are better off. The median household income of a Trump voter so far in the primaries is about $72,000,” Silver pointed out, “well above the national median household income of about $56,000.”
-Silver’s argument is accurate insofar as it goes, but it does not go far enough.
-In the primaries, Trump’s voters were more affluent than the general electorate. But among Republican primary voters, the core of Trump’s support was among those with the lowest level of education and, in most cases, the lowest income levels.
-Take a look at the exit polls from the March 1 Virginia primary. Trump beat his closest competitor, Senator Marco Rubio, among those without college degrees, 43-25, while Rubio beat Trump among those with degrees, 37-27. Trump beat Rubio 39-25 among voters making less than $100,000 but Rubio beat Trump 40-27 among those making more than $100,000. The same pattern was repeated over and over again in primaries across the country.
-Trump’s strongest support in the primaries and in the general election came disproportionately from the least well educated whites — those who, as Acemoglu and Autor argue, are most vulnerable to the economic dislocation resulting from automation, the rise of a robot work force, global trade and outsourcing.
-In an email, Autor describes how the two explanatory models dovetail. He starts with a question:
-He then goes on to point out that
+Why Facebook Showed You That Ad for the Candidate You Hate - The New York Times
+You may be a reliable Democratic voter in a solid-blue city. Maybe you have a graduate degree; maybe you’re a member of an ethnic or religious minority; maybe you are a woman.
+Any of these would make you a likely Hillary Clinton supporter. So why did you just see an ad for Donald J. Trump’s presidential campaign on Facebook?
+The New York Times has collected an extensive database of political Facebook ads, and data about how they are targeted, from our readers as part of our Political Ad Tracker project.
+Microtargeted online advertisements can be a powerful tool for political campaigns to tailor a message to specific people they are trying to reach. But the reason you saw a particular campaign ad on Facebook may have nothing to do with your political views, or even your demographic profile. It could depend on whether you live in a swing state and on your internet activity — or be practically random.
+You can find the reasons you were shown a particular ad, political or otherwise, on Facebook with just a few steps.
+Here’s how:
+• First, find an ad in your Facebook news feed.
+• Then, in the upper right corner of that ad, find the small V-shaped gray arrow and click it.
+• A menu will appear with a button that says, “Why am I seeing this?” Click it.
+• A pop-up will appear with an explanation of why the advertiser chose to show you that ad.
+Advertisers get the most for their money by sending their ads to people most likely to be receptive to them. But some ads are very broadly targeted. Lisa Klepper Tannenbaum, a suburban New Jersey woman who is a registered Democrat and likes Mrs. Clinton’s Facebook page — she even volunteers for her campaign — saw an ad seeking donations from Mr. Trump on her Facebook feed between family photos and updates from long-lost high school classmates.
+“What actions have I taken, what sites have I visited, that would make someone believe there’s even a remote possibility I would support Donald Trump?” Ms. Tannenbaum said she wondered.
+One possible explanation is that Mr. Trump’s campaign has run some ads to be shown to anyone older than 27 in the United States.
+Brad Parscale, the digital director for the Trump campaign, said the campaign had tested many combinations of demographic criteria to raise the most money while spending less on ads. The campaign’s online donors tend to be older than 27, he said, adding that younger people, who are less likely to donate, may be shown fewer fund-raising ads.
+Here are some other reasons you might see a candidate’s ads:
+The campaigns have your email address. The campaigns have uploaded to Facebook lists of email addresses that supporters have provided online, while donating money, or at rallies. These lists may be sliced and diced by the campaigns according to geography, race, gender or more esoteric data purchased from commercial brokers.
+Facebook then matches each email to the correct Facebook page, assuming the supporter is one of the roughly 200 million Americans with an account. Advertisers, including the Trump campaign, have used this targeting mechanism to encourage a subset of their supporters in swing states like North Carolina and Florida to request an absentee ballot.
+ Facebook thinks you resemble the candidate’s supporters. Both campaigns have made extensive use of an opaque feature called “look-alike audiences.” This feature finds users who have Facebook fingerprints — demographic profiles, histories of “likes” and clicks — that are similar to people who already like the candidate’s Facebook page. These potential supporters then see the ad. The candidate does not directly get a list of names, but the Clinton campaign has run ads to “look-alikes” asking them for their email addresses so that it can directly reach them via email later.
+Your political leanings. Some ads have been targeted based on how Facebook has classified your political beliefs — on a scale from “Very Conservative” to “Moderate” to “Very Liberal.” It makes these judgments based on some obvious clues, such as which candidates’ pages you “like,” and some not so obvious. If you “like” the same shoes or cars that many liberals like, Facebook might peg you as a liberal, too.
+Your age or ethnicity. Even if the campaigns do not know your email address and Facebook cannot figure out your political leanings, you might see ads if the details of your demography signal what camp you are in. Those recently targeted by the Clinton campaign have included Ohioans between 18 and 34 years old, and African-Americans in Florida and Pennsylvania, groups in which she might find valuable new voters. (Facebook does not ask its users their race, but it does let advertisers show ads to people grouped by “ethnic affinity” who “like” content that might interest a particular ethnic group.)
+Your browsing history. Visiting a candidate’s website can prompt an ad to be shown to you the next time you log on to Facebook.
+Many campaign sites include small pieces of software from Facebook or other networks that record who visited the site. This technique, called retargeting, is not unique to politics; you may have comparison-shopped for a computer or other big-ticket item and then discovered that ads for that exact item seemed to follow you around the web for weeks.
+And it can come across as a personal insult: Just as a devoted iPhone user does not want to be bombarded with Samsung ads, a Trump supporter might not want to be hounded by plugs for Mrs. Clinton.
