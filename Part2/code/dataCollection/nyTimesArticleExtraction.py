@@ -8,17 +8,18 @@ Created on Mon Apr 23 17:24:54 2018
 from nytimesarticle import articleAPI
 from bs4 import BeautifulSoup
 import urllib
+import time
 
-# Define API key and query term
+# Define API key and input parameters for extraction
 api = articleAPI('fa567ce571174336957fc6786b4dc91e')
-category = 'Sports'
-search_keyword = "Baseball"
-##Keywords used so far
-# Politics - trump, democracy, Republicans, Democrats
-# Sports - "N.F.L, baseball, basketball
+category = "Politics"
+search_keyword = "Liberals"
+keyword = "/"+category+"/"
+Pages = [1,2,3,4,5] #define how many pages you want to extract
 
 # Method to extract the content of the url
 def parseURL(url):
+    content = []
     g = urllib.request.urlopen(url)
     soup = BeautifulSoup(g.read(), 'html.parser')
     # Article = soup.find(id='story') - denoted only the content
@@ -30,11 +31,10 @@ def parseURL(url):
     if (mydivs == []):
         mydivs = soup.findAll("p", {"class": "story-body-text story-content"})
     
-    if (mydivs == []):
-        return []
-    
-    # Adding title to the content
-    content = soup.title.text
+    if (mydivs != []):
+        # Adding title to the content
+        content = soup.title.text
+        #return []
     for j in range(0,len(mydivs)):
         content = content + '\n' + mydivs[j].text 
     
@@ -42,9 +42,9 @@ def parseURL(url):
         
 
 # Main code begins
-if __name__ == "__main__":
-    print('File loaded directly')
-    articles = api.search(q=search_keyword, begin_date = 20081231, page=1)
+def collectArticles(PAGE):
+    print('Collecting articles from page:%d' % PAGE)
+    articles = api.search(q=search_keyword, begin_date = 20081231, page=PAGE)
     response = articles['response']
     docs = response['docs']
     
@@ -56,8 +56,9 @@ if __name__ == "__main__":
         index = open("../../data/%s/metadata/index.txt" %(category),"w+")
         web_url=[]
         for i in range(0,len(docs)):
-            web_url.append(docs[i]['web_url'])
-            index.writelines("%s\n" % docs[i]['web_url'])
+            if (keyword.lower() in docs[i]['web_url']): #Checks if articles in from the relevant category
+                web_url.append(docs[i]['web_url'])
+                index.writelines("%s\n" % docs[i]['web_url'])
     index.close()  
     
     # Reading index file
@@ -67,30 +68,57 @@ if __name__ == "__main__":
     
     # Appending all collected articles to the existing URLs and saving to the index file
     for i in range(0,len(docs)):
-        web_url.append(docs[i]['web_url'])  
+        if (keyword.lower() in docs[i]['web_url']): #Checks if articles in from the relevant category
+            web_url.append(docs[i]['web_url'])
     web_url = list(set(web_url))    #removes duplicates
     index = open("../../data/%s/metadata/index.txt" %(category),"w+")
     for i in range(0,len(web_url)):
             index.writelines("%s\n" % web_url[i])
     index.close()  
-        
+    print("Articles successfully collected from page:%d and appended to index file" % PAGE)
+    
+    return web_url
+    
+def main():
+    print("###################################")
+    for page in Pages:
+        web_url = collectArticles(page)
+        time.sleep(5)
+    
     # Extract contents of url one by one and write it to text file
+    print("###################################")
+    print("Scraping all the urls")
     j=0
-    for i in range(0,len(web_url)):
+    i=0
+    attempt = 0 # Used to reparse articles that could not be parse due to API issues
+    while (i<len(web_url)):# in range(0,len(web_url)):
+        #print(i)
         try:
             Article_content = parseURL(web_url[i])
             if (Article_content == []):
+                attempt += 1
+                #print("Article %d extraction failed" %i + " - trying again")
+                if (attempt == 8):
+                    print("Server busy - Article %d extraction failed" %i)
+                    attempt = 0
+                    i=i+1
                 continue
             f = open("../../data/%s/%s.txt" %(category, j),"w+")
             f.write(Article_content)
             f.close()
         except:
             #web_url.remove(web_url[i])
-            print("Iteration %d" %i + " skipped - unable to fetch data")
+            print("Article %d" %i + " skipped - unable to fetch data")
             #i = i-1
             j = j-1
-        j= j+1   
-        #index = index + 1
-    
+        j= j+1
+        i= i+1
+        
+    print("###################################")
+    print("Total number of articles extracted:%d" % j)
     #index.write(str())
     #index.close()
+    
+if __name__ == "__main__":
+    print("File loaded directly")
+    main()
