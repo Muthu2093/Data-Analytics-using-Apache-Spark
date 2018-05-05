@@ -9,8 +9,25 @@ from operator import add
 
 from pyspark.sql import SparkSession
 from pyspark import SparkConf, SparkContext
+from pyspark.sql.types import IntegerType
+from pyspark.sql import Row # for DF creation
+from pyspark.sql import SQLContext # for DF
+from pyspark.ml.feature import StopWordsRemover ##for stop words removal
 
-stop_words=["percent","than","can","her","about","would","said","more","has","or","i","are","will","but","it","be","at","said","his","have","by","had","from","not","at","as","The","with","of","a", "an", "the", "this", "that","those", "on", "in", "for","he", "she","their", "they", "we", "I", "you", "who", "which", "where", "when", "why", "was", "were","while","under","my","me", "is", "hi" , "hey", "hello","to","and"]
+
+stop_words=["mr.","said","said","how","said,","because","do","there",
+"make","now","its","two","one","said.","chief","up","if","out","some",
+"what","just","year","like","told","since","only","may","into","any","one",
+"over","after","three","before","him","them","back","four","did","get","-",
+"mr","most","no","other","also","much","so","many","could","last","all",
+"new","percent","than","can","her","about","would","said","more","has",
+"or","i","are","will","but","it","its","be","been","at","said","his",
+"have","by","had","from","not","at","as","the","with","of","a", "an", 
+"the", "this", "that","those", "on", "in", "for","he", "she","their", 
+"they", "we","been", "i", "you", "who", "which", "where", "when", "why", 
+"was", "were","while","under","my","me", "is", "hi" , "hey", "hello","to",
+"and","got","former","against","mrs.","mrs","between","ms.","ms","first",
+"second","third","fourth","people","even","still","each"]
 
 
 
@@ -22,19 +39,32 @@ def read_directory(sc, path):
     words = textRDD.flatMap(lambda x: x.split(' ')).map(lambda x: (x, 1))
     wordcount = words.reduceByKey(add).map(lambda (x,y): (y,x)).sortByKey(ascending=False).collect()
     
+    #CONVERSION TO DF
+    R = Row('count', 'words')
+    sqlContext = SQLContext(sc)
+    DF = sqlContext.createDataFrame([R(i, x) for i, x in (wordcount)])
+    DF.show()
+    
+    #mvv_list = DF.select('words').show()
     
     for (count, word) in wordcount:
-                    
+        
+        try:
+            mynewstring = word.encode('ascii')
+        except:
+            #print("there are non-ascii characters in there")
+            continue    
+        
         if word.lower() in stop_words:
-            pass
+            continue
         else:
             print("%s: %i" % (word, count))
-            if(icount!=10):
+            if(icount!=50):
                 feature_list.append(word)
                 icount=icount+1
             else:
-                break            
-                       
+                break                      
+    
     return feature_list
 
 if __name__ == "__main__":
@@ -42,7 +72,7 @@ if __name__ == "__main__":
     conf = SparkConf().setAppName("Lab3")
     conf=conf.setMaster("local[*]")
     sc=SparkContext(conf=conf)
-    path="/home/hadoop/spark/data_lab3/data/Business/*.txt"
+    path="../../data/Health/*.txt"
     
     
     bs_list= read_directory(sc,path)
