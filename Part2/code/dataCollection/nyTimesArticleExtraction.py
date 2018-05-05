@@ -12,10 +12,13 @@ import time
 
 # Define API key and input parameters for extraction
 api = articleAPI('fa567ce571174336957fc6786b4dc91e')
-category = "Politics"
-search_keyword = "Liberals"
+category = "Health"
+search_keywords = ["plague","medical","harvard medical school","heart","brain","alzheimer's"]
 keyword = "/"+category+"/"
-Pages = [1,2,3,4,5] #define how many pages you want to extract
+Pages = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15] #define how many pages you want to extract
+Date = 20110202
+# doctor dental hygience
+
 
 # Method to extract the content of the url
 def parseURL(url):
@@ -35,6 +38,7 @@ def parseURL(url):
         # Adding title to the content
         content = soup.title.text
         #return []
+        
     for j in range(0,len(mydivs)):
         content = content + '\n' + mydivs[j].text 
     
@@ -42,9 +46,9 @@ def parseURL(url):
         
 
 # Main code begins
-def collectArticles(PAGE):
+def collectArticles(PAGE, DATE, search_keyword, keyword, category):
     print('Collecting articles from page:%d' % PAGE)
-    articles = api.search(q=search_keyword, begin_date = 20081231, page=PAGE)
+    articles = api.search(q=search_keyword, begin_date = DATE, page=PAGE)
     response = articles['response']
     docs = response['docs']
     
@@ -79,19 +83,21 @@ def collectArticles(PAGE):
     
     return web_url
     
-def main():
+def main(Pages, Date, search_keywords, keyword, category):
     print("###################################")
-    for page in Pages:
-        web_url = collectArticles(page)
-        time.sleep(5)
+    for idx in range(0,len(search_keywords)):
+        search_keyword = search_keywords[idx]
+        for page in Pages:
+            web_url = collectArticles(page, Date, search_keyword, keyword, category)
+            time.sleep(5)
     
     # Extract contents of url one by one and write it to text file
     print("###################################")
     print("Scraping all the urls")
     j=0
     i=0
-    attempt = 0 # Used to reparse articles that could not be parse due to API issues
-    while (i<len(web_url)):# in range(0,len(web_url)):
+    attempt = 0 # Used to reparse articles that could not be parsed due to API issues
+    while (i<len(web_url)):
         #print(i)
         try:
             Article_content = parseURL(web_url[i])
@@ -121,4 +127,4 @@ def main():
     
 if __name__ == "__main__":
     print("File loaded directly")
-    main()
+    main(Pages, Date, search_keywords, keyword, category)
