@@ -76,9 +76,11 @@ def sparse_matrix(sc, path, feature_list):
     count_list=[]
     sm_file=open('/home/hadoop/Desktop/sm_file.txt','w+')
     
+    Label=-1
       
     for category in category_list:
         i=0
+        Label=Label+1
         for i in range(50):
             
             count_list=[]
@@ -88,7 +90,7 @@ def sparse_matrix(sc, path, feature_list):
             textRDD=sc.textFile(dir_path)
             words = textRDD.flatMap(lambda x: x.split(' ')).map(lambda x: (x, 1))
             wordcount = words.reduceByKey(add).map(lambda (x,y): (y,x)).sortByKey(ascending=False).collect()        
-            count_list.append(category)
+            count_list.append(Label)
             for feature in feature_list:
                 flag=0
                 
@@ -101,12 +103,12 @@ def sparse_matrix(sc, path, feature_list):
                     count_list.append(0)
             
             k=0
-            for count in count_list:
+            for count, feature_count in zip(count_list,range(len(feature_list)+1)):
                 if(k==0):
-                    sm_file.write(str(count))
+                    sm_file.write(str(count)+" ")
                     k=1
                 else:
-                    sm_file.write(","+str(count))
+                    sm_file.write(str(feature_count)+":"+str(count)+" ")
                 
             sm_file.write("\n")
 
