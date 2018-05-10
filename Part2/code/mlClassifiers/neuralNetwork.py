@@ -7,6 +7,7 @@ Created on Tue May  8 01:10:54 2018
 
 from pyspark.ml.classification import MultilayerPerceptronClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+from pyspark.mllib.evaluation import MulticlassMetrics
 
 from pyspark.sql import SQLContext
 from pyspark import SparkConf, SparkContext
@@ -43,3 +44,8 @@ predictionAndLabels = result.select("prediction", "label")
 result.select("prediction", "label").show(60, False)
 evaluator = MulticlassClassificationEvaluator(metricName="accuracy")
 print("Test set accuracy = " + str(evaluator.evaluate(predictionAndLabels)))
+
+#Print the confusion matrix of prediction on test data
+metrics = MulticlassMetrics(predictionAndLabels.rdd)
+#print(metrics.confusionMatrix().toArray())
+print("Confusion Matrix:\n" + str(metrics.confusionMatrix().toArray()))
