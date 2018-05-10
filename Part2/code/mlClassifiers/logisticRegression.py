@@ -3,7 +3,7 @@ from pyspark.ml.classification import LogisticRegression, LogisticRegressionMode
 from pyspark.sql import SQLContext
 from pyspark import SparkConf, SparkContext
 
-from pyspark.ml.evaluation import BinaryClassificationEvaluator
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
 from pyspark.ml.tuning import ParamGridBuilder, CrossValidator
 
@@ -54,7 +54,7 @@ mlrModel = mlr.fit(trainingData)
 
 test_data_label = lrModel.transform(testData)
 
-evaluator = BinaryClassificationEvaluator()
+evaluator = MulticlassClassificationEvaluator()
 accuracy = evaluator.evaluate(test_data_label)
 #test_data_label.select("prediction", "label").show(60, False)
 

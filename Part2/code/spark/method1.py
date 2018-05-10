@@ -74,7 +74,7 @@ def sparse_matrix(sc, path, feature_list):
     category_list=["Business/","Sports/","Politics/","Health/"]
         
     count_list=[]
-    sm_file=open('/home/hadoop/Desktop/sm_file.txt','w+')
+    sm_file=open('../../data/featureMatrix.txt','w+')
     
     Label=-1
       
@@ -112,18 +112,6 @@ def sparse_matrix(sc, path, feature_list):
                 
             sm_file.write("\n")
 
-    
-    
-    #for wc in wordcount:
-    #    print(wc)
-
-    #for count in count_list:
-     #   print(count)
-        
-    #print(len(feature_list))
-    #print(len(count_list))
-#   
-   
 
 if __name__ == "__main__":
     

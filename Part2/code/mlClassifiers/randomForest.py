@@ -16,7 +16,7 @@ sc   = SparkContext(conf=conf)
 sqlContext = SQLContext(sc)
 
 # Load and parse the data file, converting it to a DataFrame.
-data = sqlContext.read.format("libsvm").option("delimiter", " ").load("test_data.txt")
+data = sqlContext.read.format("libsvm").option("delimiter", " ").load("../../data/featureMatrix.txt")
 # Load and parse the data file, converting it to a DataFrame.
 
 labelIndexer = StringIndexer(inputCol="label", outputCol="indexedLabel").fit(data)
