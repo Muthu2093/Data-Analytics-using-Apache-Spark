@@ -3,6 +3,9 @@ from pyspark.ml.classification import RandomForestClassifier
 from pyspark.ml.feature import IndexToString, StringIndexer, VectorIndexer
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
+from pyspark.mllib.evaluation import MulticlassMetrics
+from pyspark.sql.functions import *
+
 from pyspark.sql import SQLContext
 from pyspark import SparkConf, SparkContext
 
@@ -15,12 +18,7 @@ sqlContext = SQLContext(sc)
 # Load and parse the data file, converting it to a DataFrame.
 data = sqlContext.read.format("libsvm").option("delimiter", " ").load("test_data.txt")
 # Load and parse the data file, converting it to a DataFrame.
-#data = sqlContext.read.format("libsvm").option("delimiter", " ").load("doc2.txt")
 
-# Automatically identify categorical features, and index them.
-# Set maxCategories so features with > 4 distinct values are treated as continuous.
-# Index labels, adding metadata to the label column.
-# Fit on whole dataset to include all labels in index.
 labelIndexer = StringIndexer(inputCol="label", outputCol="indexedLabel").fit(data)
 
 # Automatically identify categorical features, and index them.
@@ -49,6 +47,8 @@ predictions = model.transform(testData)
 
 # Select example rows to display.
 predictions.select("predictedLabel", "label", "features").show(60, False)
+predictionAndLabels = predictions.select(col("prediction"), col("indexedLabel"))
+predictionAndLabels.show(60, False)
 
 # Select (prediction, true label) and compute test error
 evaluator = MulticlassClassificationEvaluator(
@@ -57,5 +57,10 @@ accuracy = evaluator.evaluate(predictions)
 print("Test Error = %g" % (1.0 - accuracy))
 print("Accuracy " + str(accuracy))
 
-rfModel = model.stages[2]
-print(rfModel)  # summary only
+#rfModel = model.stages[2]
+#print(rfModel)  # summary only
+
+#Print the confusion matrix of prediction on test data
+metrics = MulticlassMetrics(predictionAndLabels.rdd)
+print("Confusion Matrix:\n" + str(metrics.confusionMatrix().toArray()))
+
