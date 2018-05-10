@@ -30,7 +30,7 @@ test = splits[1]
 # specify layers for the neural network:
 # input layer of size 4 (features), two intermediate of size 5 and 4
 # and output of size 3 (classes)
-layers = [70, 500,500, 4]
+layers = [70, 100,25, 4]
 
 # create the trainer and set its parameters
 trainer = MultilayerPerceptronClassifier(maxIter=100, layers=layers, blockSize=128, seed=1234)
