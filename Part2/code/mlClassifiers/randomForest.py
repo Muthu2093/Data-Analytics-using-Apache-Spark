@@ -16,18 +16,19 @@ sc   = SparkContext(conf=conf)
 sqlContext = SQLContext(sc)
 
 # Load and parse the data file, converting it to a DataFrame.
-data = sqlContext.read.format("libsvm").option("delimiter", " ").load("../../data/featureMatrix.txt")
+trainingData = sqlContext.read.format("libsvm").option("delimiter", " ").load("../../data/featureMatrixTrainingdata.txt")
+testData = sqlContext.read.format("libsvm").option("delimiter", " ").load("../../data/featureMatrixTestingdata.txt")
 # Load and parse the data file, converting it to a DataFrame.
 
-labelIndexer = StringIndexer(inputCol="label", outputCol="indexedLabel").fit(data)
+labelIndexer = StringIndexer(inputCol="label", outputCol="indexedLabel").fit(trainingData)
 
 # Automatically identify categorical features, and index them.
 # Set maxCategories so features with > 4 distinct values are treated as continuous.
 featureIndexer =\
-    VectorIndexer(inputCol="features", outputCol="indexedFeatures", maxCategories=4).fit(data)
+    VectorIndexer(inputCol="features", outputCol="indexedFeatures", maxCategories=4).fit(trainingData)
 
 # Split the data into training and test sets (30% held out for testing)
-(trainingData, testData) = data.randomSplit([0.7, 0.3])
+#(trainingData, testData) = data.randomSplit([0.7, 0.3])
 
 # Train a RandomForest model.
 rf = RandomForestClassifier(labelCol="indexedLabel", featuresCol="indexedFeatures", numTrees=10)
@@ -44,11 +45,11 @@ model = pipeline.fit(trainingData)
 
 # Make predictions.
 predictions = model.transform(testData)
-
+predictions.show()
 # Select example rows to display.
-predictions.select("predictedLabel", "label", "features").show(60, False)
+#predictions.select("predictedLabel", "label", "features").show(60, False)
 predictionAndLabels = predictions.select(col("prediction"), col("indexedLabel"))
-predictionAndLabels.show(60, False)
+#predictionAndLabels.show(60, False)
 
 # Select (prediction, true label) and compute test error
 evaluator = MulticlassClassificationEvaluator(

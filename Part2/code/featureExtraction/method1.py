@@ -70,7 +70,7 @@ def top_words(sc, path):
     
     return feature_list
     
-def sparse_matrix(sc, path, feature_list):
+def sparse_matrix(sc, path, feature_list,train_length, length):
     category_list=["Business/","Sports/","Politics/","Health/"]
         
     count_list=[]
@@ -81,11 +81,13 @@ def sparse_matrix(sc, path, feature_list):
     for category in category_list:
         i=0
         Label=Label+1
-        for i in range(50):
+        for i in range(test_length):
             
             count_list=[]
-            
-            dir_path=path+str(category)+str(i)+".txt"
+            if ("/Testing" in path):
+                dir_path=path+str(category)+str(i + train_length)+".txt"
+            else:
+                dir_path=path+str(category)+str(i)+".txt"
             
             textRDD=sc.textFile(dir_path)
             words = textRDD.flatMap(lambda x: x.split(' ')).map(lambda x: (x, 1))
@@ -119,6 +121,8 @@ if __name__ == "__main__":
     feature_list=[]
     global dataset
     dataset = "Testing/"
+    train_length = 76
+    test_length = 30
     
     conf = SparkConf().setAppName("Lab3")
     conf=conf.setMaster("local[*]")
@@ -141,7 +145,7 @@ if __name__ == "__main__":
 #        print("%s: " % (word))
         
      
-    sparse_matrix(sc,path, feature_list)
+    sparse_matrix(sc,path, feature_list, train_length,test_length)
     
         
     

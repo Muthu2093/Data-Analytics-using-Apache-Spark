@@ -1,0 +1,37 @@
+
+####Random Forest on Training data
+
+Test Error = 0.191176
+Accuracy 0.808823529412
+
+Confusion Matrix:
+[[ 16.   0.   0.   0.]
+ [  0.  13.   2.   4.]
+ [  0.   0.  13.   5.]
+ [  0.   1.   1.  13.]]
+
+
+#### Random Forest on Test data
+
+
+## Accuracy on Neural Networks
+Test set accuracy = 0.9
+
+Confusion Matrix:
+[[ 27.   0.   2.   1.]
+ [  1.  28.   1.   0.]
+ [  3.   0.  26.   1.]
+ [  1.   0.   2.  27.]]
+
+
+## Accuracy on Naive Bayes
+Test set accuracy = 0.941666666667
+
+Confusion Matrix:
+[[ 27.   0.   2.   1.]
+ [  0.  30.   0.   0.]
+ [  2.   0.  28.   0.]
+ [  1.   0.   1.  28.]]
+
+
+
