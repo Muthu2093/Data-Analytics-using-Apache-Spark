@@ -57,9 +57,6 @@ accuracy = evaluator.evaluate(predictions)
 print("Test Error = %g" % (1.0 - accuracy))
 print("Accuracy " + str(accuracy))
 
-#rfModel = model.stages[2]
-#print(rfModel)  # summary only
-
 #Print the confusion matrix of prediction on test data
 metrics = MulticlassMetrics(predictionAndLabels.rdd)
 print("Confusion Matrix:\n" + str(metrics.confusionMatrix().toArray()))

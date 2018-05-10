@@ -74,7 +74,7 @@ def sparse_matrix(sc, path, feature_list):
     category_list=["Business/","Sports/","Politics/","Health/"]
         
     count_list=[]
-    sm_file=open('../../data/featureMatrix.txt','w+')
+    sm_file=open('../../data/featureMatrixTestingdata.txt','w+')
     
     Label=-1
       
@@ -117,14 +117,18 @@ if __name__ == "__main__":
     
     categories_list=["Business","Sports","Politics","Health"]
     feature_list=[]
+    global dataset
+    dataset = "Testing/"
     
     conf = SparkConf().setAppName("Lab3")
     conf=conf.setMaster("local[*]")
     sc=SparkContext(conf=conf)
-    path="../../data/"
+    training_path="../../data/Training/"
+    path="../../data/" + dataset
     
+    # Extracts top feature words
     for word in categories_list:
-        dir_path=path+word+"/*.txt"                
+        dir_path=training_path+word+"/*.txt"                
         temp_list= top_words(sc,dir_path)
         for w in temp_list:
             if(w in feature_list):
