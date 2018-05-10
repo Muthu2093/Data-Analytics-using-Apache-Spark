@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+Created on Thu May 10 16:16:05 2018
+
+@author: muthuvel
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
 Created on Mon Apr 23 17:24:54 2018
 
 @author: muthuvel
@@ -12,11 +20,11 @@ import time
 
 # Define API key and input parameters for extraction
 api = articleAPI('fa567ce571174336957fc6786b4dc91e')
-category = "Health"
-search_keywords = ["Doctor","Medical","Patient","flu","disease","Medicine","Pharamaceutical","Healthcare","Insurance"]
+category = "Politics"
+search_keywords = ["trump","republican","democrat","democracy","election","politics","obama"]
 keyword = "/"+category+"/"
-keyword1 = "Testing/"+category
-Pages = [16,17,18,19,20,21,22,23,24,25,26,27,28,29,30] #define how many pages you want to extract
+keyword1 = "Training/"+category
+Pages = [1,2,3,4,5] #define how many pages you want to extract
 Date = 20110202
 # doctor dental hygience
 
@@ -29,7 +37,7 @@ def parseURL(url):
     # Article = soup.find(id='story') - denoted only the content
     
     # Classes that containg the main contents of the articles
-    mydivs = soup.findAll("p", {"class": "css-1cy1v93 e2kc3sl0"})
+    mydivs = soup.findAll("p", {"class": "css-imjp5j e2kc3sl0"})
     
     # For articles in which  the above class extraction command fails
     if (mydivs == []):
