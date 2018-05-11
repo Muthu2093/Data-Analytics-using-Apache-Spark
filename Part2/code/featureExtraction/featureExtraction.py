@@ -74,7 +74,7 @@ def sparse_matrix(sc, path, feature_list,train_length, length):
     category_list=["Business/","Sports/","Politics/","Health/"]
         
     count_list=[]
-    sm_file=open('../../data/featureMatrixTestingdata.txt','w+')
+    sm_file=open('../../data/featureMatrixUnknowndata.txt','w+')
     
     Label=-1
       
@@ -120,9 +120,9 @@ if __name__ == "__main__":
     categories_list=["Business","Sports","Politics","Health"]
     feature_list=[]
     global dataset
-    dataset = "Testing/"
+    dataset = "Unknown/"
     train_length = 76
-    test_length = 30
+    test_length = 5
     
     conf = SparkConf().setAppName("Lab3")
     conf=conf.setMaster("local[*]")
